@@ -56,7 +56,23 @@ class LinkedList{
         return currNode
     }
     pop(){
-        
+
+        let currNode = this.getHead()
+        while(currNode.next.next !== null){
+            currNode = currNode.next
+        }
+        currNode.next = null
+        return this.tail()
+    }
+    contains(value){
+        let currNode = this.getHead()
+        while(currNode.next !== null){
+            if(currNode.value == value){
+                return true
+            }
+            currNode = currNode.next
+        }
+        return false
     }
 }
 
@@ -72,4 +88,4 @@ linkedList1.append(8)
 
 linkedList1.prepend(2)
 
-console.log(linkedList1.at(2));
+console.log(linkedList1.contains(10));
