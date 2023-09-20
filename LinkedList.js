@@ -105,7 +105,39 @@ class LinkedList{
         return str
     }
 
+    insertAt(value, index){
+        let length = this.size()
+        
+        if(index === 0){
+            this.prepend(value)
+        }
+        
+        if(index > length){
+            this.append(value)
+        }
+        
+        let prevNode = this.at(index-1)
+        let newNode = new Node(value,prevNode.next)
+        prevNode.next = newNode
 
+        return this.toString()
+    
+    }
+
+    removeAt(index){
+        
+        if(index === 0 ){
+            this.head = this.head.next 
+            return this.toString()   
+        }
+
+        if(index > this.size() - 1) return this.toString()
+
+        let prevNode = this.at(index-1)
+        prevNode.next = prevNode.next.next
+
+        return this.toString()
+    }
 
 }
 
@@ -119,6 +151,7 @@ linkedList1.append(6)
 linkedList1.append(7)
 linkedList1.append(8)
 
+linkedList1.append(9)
 linkedList1.prepend(2)
 
-console.log(linkedList1.toString());
+console.log(linkedList1.removeAt(3));
